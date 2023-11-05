@@ -178,7 +178,8 @@ class ChatGPTAutomation:
 
 
     def wait_for_human_verification(self):
-        print("You need to manually complete the log-in or the human verification if required.")
+        print("You need to manually complete the log-in or the human verification if required."
+              "For testing purposes, please also turn off the chat history feature.")
 
         while True:
             user_input = input(
