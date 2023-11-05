@@ -89,7 +89,7 @@ class ChatGPTAutomation:
             self.images_path.append('no image')
         self.num_prompts += 1
 
-        time.sleep(5)
+        time.sleep(10)
 
     def upload_image(self, file_path):
         if not self.driver:
