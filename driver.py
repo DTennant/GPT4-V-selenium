@@ -171,7 +171,6 @@ class ChatGPTAutomation:
     def return_last_response(self):
         """ :return: the text of the last chatgpt response """
 
-        time.sleep(10)
         response_elements = self.driver.find_elements(by=By.CSS_SELECTOR, value='div.text-base')
         return response_elements[-1].text
 

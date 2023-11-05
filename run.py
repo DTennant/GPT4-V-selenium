@@ -17,8 +17,8 @@ for i, row in tqdm(df.iterrows(), total=len(df)):
     chatgpt.upload_image(path)
     chatgpt.send_prompt_to_chatgpt(prompt)
 
-    response = chatgpt.return_last_response()
-    print(response)
+    # response = chatgpt.return_last_response()
+    # print(response)
 
     # __import__("ipdb").set_trace()
     chatgpt.save_conversation(file_name)
