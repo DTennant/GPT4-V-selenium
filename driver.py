@@ -14,18 +14,16 @@ import os
 
 class ChatGPTAutomation:
 
-    def __init__(self, chrome_path, chrome_driver_path):
+    def __init__(self, chrome_driver_path):
         """
         This constructor automates the following steps:
         1. Open a Chrome browser with remote debugging enabled at a specified URL.
         2. Prompt the user to complete the log-in/registration/human verification, if required.
         3. Connect a Selenium WebDriver to the browser instance after human verification is completed.
 
-        :param chrome_path: file path to chrome.exe (ex. C:\\Users\\User\\...\\chromedriver.exe)
-        :param chrome_driver_path: file path to chrome.exe (ex. C:\\Users\\User\\...\\chromedriver.exe)
+        :param chrome_driver_path: file path to chromedriver.exe (ex. C:\\Users\\User\\...\\chromedriver.exe)
         """
 
-        self.chrome_path = chrome_path
         self.chrome_driver_path = chrome_driver_path
 
         url = r"https://chat.openai.com"
@@ -162,8 +160,8 @@ class ChatGPTAutomation:
                 else:
                     images = 'no image'
                 file.write(
-                    f"image: {images}\n"
-                    f"prompt: {chatgpt_conversation[i].text}\nresponse: {chatgpt_conversation[i + 1].text}"
+                    f"|image|: {images}\n"
+                    f"|prompt|: {chatgpt_conversation[i].text}\n|response|: {chatgpt_conversation[i + 1].text}"
                     f"\n\n{delimiter}\n\n")
 
 
