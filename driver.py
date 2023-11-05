@@ -78,7 +78,7 @@ class ChatGPTAutomation:
         """ Sends a message to ChatGPT and waits for 20 seconds for the response """
 
         input_box = self.driver.find_element(by=By.XPATH, value='//textarea[contains(@placeholder, "Send a message")]')
-        prompt = prompt.replace("'", "\\'")
+        prompt = prompt.replace("'", "\\'") + " Please keep your response short and to the point."
         js_code = f"""arguments[0].value = '{prompt}';"""
         self.driver.execute_script(js_code, input_box)
         input_box.send_keys(Keys.RETURN)
@@ -89,7 +89,7 @@ class ChatGPTAutomation:
             self.images_path.append('no image')
         self.num_prompts += 1
 
-        time.sleep(10)
+        time.sleep(20)
 
     def upload_image(self, file_path):
         if not self.driver:
@@ -119,6 +119,8 @@ class ChatGPTAutomation:
 
             # Click the 'Clear chat' button
             clear_button.click()
+            self.images_path = []
+            self.num_prompts = 0 
             print("Chat cleared successfully.")
         except Exception as e:
             print(f"Error clearing chat: {e}")
@@ -169,6 +171,7 @@ class ChatGPTAutomation:
     def return_last_response(self):
         """ :return: the text of the last chatgpt response """
 
+        time.sleep(10)
         response_elements = self.driver.find_elements(by=By.CSS_SELECTOR, value='div.text-base')
         return response_elements[-1].text
 
